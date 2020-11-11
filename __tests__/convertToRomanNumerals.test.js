@@ -110,6 +110,15 @@ describe('Convert to Roman Numerals',  () =>{
 
 
 describe('Convert to Arabic number', () =>{
+    it('should receive Invalid numeral when numeral IL is passed', async () => {
+        const response = await request(app)
+        .post("/convertToArabicNumbers")
+        .send({
+            roman_numeral : 'IL'
+        });
+        expect(response.body.error).toEqual('Invalid roman numeral');
+    });
+
     it('should receive 1 when numeral I is passed', async () => {
         const response = await request(app)
         .post("/convertToArabicNumbers")
@@ -135,6 +144,15 @@ describe('Convert to Arabic number', () =>{
             roman_numeral : 'XVI'
         });
         expect(response.body.arabic_number).toEqual(16);
+    });
+
+    it('should receive 19 when numeral XIX is passed', async () => {
+        const response = await request(app)
+        .post("/convertToArabicNumbers")
+        .send({
+            roman_numeral : 'XIX'
+        });
+        expect(response.body.arabic_number).toEqual(19);
     });
 
     it('should receive 49 when numeral XLIX is passed', async () => {

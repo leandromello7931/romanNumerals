@@ -43,27 +43,33 @@ class ConvertController{
 
     async convertToArabicNumbers(req, res){
         let {roman_numeral} = req.body;
-        roman_numeral = roman_numeral.split('');
-        let total = 0;
-       
-        for(let i = 0; i < roman_numeral.length; i++){
-            let first = this.getRomanNumeral().find(numeral => numeral.numeral === roman_numeral[i]);
-            let second = this.getRomanNumeral().find(numeral => numeral.numeral === roman_numeral[i+1]);
-            if(first){
-                first = first.number
+        var _regexp = /^((\(M\)){0,3})(\(C\)\(M\)|\(C\)\(D\)|(\(D\))?(\(C\)){0,3})(\(X\)\(C\)|\(X\)\(L\)|(\(L\))?(\(X\)){0,3})(M\(X\)|M\(V\)|(\(V\))?)(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+        if(_regexp.test(roman_numeral)) {
+            roman_numeral = roman_numeral.split('');
+            let total = 0;
+        
+            for(let i = 0; i < roman_numeral.length; i++){
+                let first = this.getRomanNumeral().find(numeral => numeral.numeral === roman_numeral[i]);
+                let second = this.getRomanNumeral().find(numeral => numeral.numeral === roman_numeral[i+1]);
+                if(first){
+                    first = first.number
+                }
+                if(second){
+                    second = second.number
+                }
+                if(first < second){
+                    total -= (first);
+                }else{
+                    total += (first);
+                }
+        
             }
-            if(second){
-                second = second.number
-            }
-            if(first < second){
-                total -= (first);
-            }else{
-                total += (first);
-            }
-    
+            return res.status(200).send({arabic_number: total});
+        }else{
+            return res.status(200).send({error: 'Invalid roman numeral'});
         }
-        return res.status(200).send({arabic_number: total});
-
+        
+ 
     }
 
     
