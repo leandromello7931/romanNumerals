@@ -22,23 +22,38 @@ Para rodar a aplicação
 
 Para rodar os testes
 ```
-
 # npm test
 ```
 
 ## Endpoints
-###Parte I - Converter de número para numeral romano
+### Parte I - Converter de número para numeral romano
+
 http://localhost:3000/convertToRomanNumerals
 
-Exemplo:
+#### Exemplo:
+
+Entrada:
 ```
 # {"arabic_number": 2888} 
 ```
+Saída:
+```
+# {"numeral": "MMDCCCLXXXVIII"}
+```
 
 
-###Parte II - Converter de numeral romano para Número
-localhost:3000/convertToArabicNumbers
-Exemplo:
+
+### Parte II - Converter de numeral romano para número
+
+http://localhost:3000/convertToArabicNumbers
+#### Exemplo:
+
+Entrada:
 ```
 {"roman_numeral" : "MCMXCIV"}
+```
+
+Saída:
+```
+{"arabic_number": 1994}
 ```
