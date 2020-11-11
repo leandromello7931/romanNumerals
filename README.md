@@ -6,21 +6,21 @@
 ## Tecnologias utilizadas
     NodeJS v12.18.3
     Jest v26.6.3
-    Npm v 6.14.6
+    Npm v6.14.6
 
 ## Instalação
-
+Para instalar as dependências, executar o comando abaixo:
 ```
 # npm i
 ```
 
-Para rodar a aplicação
+Para rodar a aplicação:
 
 ```
 # npm start
 ```
 
-Para rodar os testes
+Para rodar os testes:
 ```
 # npm test
 ```
